@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info = @Info(
-                title = "Form Management API",
+                title = "Form Management Api's",
                 version = "1.0.0",
                 description = "This project provides RESTful APIs for managing frominfo data within an organization. It supports common operations such as retrieving from details, searching by criteria, and maintaining Form records.",
                 contact = @Contact(
