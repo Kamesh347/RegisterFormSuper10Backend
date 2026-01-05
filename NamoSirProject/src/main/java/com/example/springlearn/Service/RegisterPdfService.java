@@ -23,9 +23,6 @@ public class RegisterPdfService {
         this.repository = repository;
     }
 
-    // ===============================
-    // DOWNLOAD ALL LETTERS AS PDF
-    // ===============================
     public byte[] downloadAllAsPdf() throws IOException {
 
         List<RegisterForm> forms = repository.findAll();
@@ -49,9 +46,7 @@ public class RegisterPdfService {
                     PDType1Font normal =
                             new PDType1Font(Standard14Fonts.FontName.HELVETICA);
 
-                    // ===============================
-                    // Sender Details
-                    // ===============================
+
                     y = writeLine(cs, bold, 11, marginX, y, form.getSenderName());
                     y = writeLine(cs, normal, 11, marginX, y, form.getSenderAddress());
                     y = writeLine(cs, normal, 11, marginX, y,
@@ -62,53 +57,38 @@ public class RegisterPdfService {
                     y -= leading;
                     y = writeLine(cs, normal, 11, marginX, y, form.getSenderDate());
 
-                    // ===============================
-                    // Receiver Details
-                    // ===============================
+
                     y -= leading * 2;
                     y = writeLine(cs, bold, 11, marginX, y, form.getReceiverName());
                     y = writeLine(cs, normal, 11, marginX, y, form.getReceiverDesignation());
                     y = writeLine(cs, normal, 11, marginX, y, form.getOrganizationName());
                     y = writeLine(cs, normal, 11, marginX, y, form.getOrganizationAddress());
 
-                    // ===============================
-                    // Subject
-                    // ===============================
+
                     y -= leading * 2;
                     y = writeLine(cs, bold, 11, marginX, y,
                             "Subject: " + form.getSubject());
 
-                    // ===============================
-                    // Salutation
-                    // ===============================
                     y -= leading * 2;
                     y = writeLine(cs, normal, 11, marginX, y,
                             form.getSalutation());
 
-                    // ===============================
-                    // Opening Paragraph
-                    // ===============================
+
                     y -= leading;
                     y = writeParagraph(cs, normal, 11, marginX, y,
                             form.getOpeningParagraph());
 
-                    // ===============================
-                    // Body Paragraph
-                    // ===============================
+
                     y -= leading;
                     y = writeParagraph(cs, normal, 11, marginX, y,
                             form.getBodyParagraph());
 
-                    // ===============================
-                    // Closing Paragraph
-                    // ===============================
+
                     y -= leading;
                     y = writeParagraph(cs, normal, 11, marginX, y,
                             form.getClosingParagraph());
 
-                    // ===============================
-                    // Sign Off
-                    // ===============================
+
                     y -= leading * 2;
                     y = writeLine(cs, normal, 11, marginX, y, form.getSignOff());
 
@@ -128,9 +108,7 @@ public class RegisterPdfService {
         }
     }
 
-    // ===============================
-    // Helper Methods
-    // ===============================
+
     private float writeLine(PDPageContentStream cs, PDType1Font font,
                             int size, float x, float y, String text)
             throws IOException {
